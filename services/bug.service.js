@@ -7,6 +7,8 @@ export const bugService = {
     query,
     getById,
     remove,
+    save,
+
 }
 
 function query() {
@@ -22,10 +24,20 @@ function remove(bugId) {
     const bugIdx = bugs.findIndex(bug => bug._id === bugId)
     if (bugIdx < 0) return Promise.reject('Cannot find bug - ' + bugId)
     bugs.splice(bugIdx, 1)
-    return _saveBugsToFile().then(()=> `bug (${bugId}) removed!`)
+    return _saveBugsToFile().then(() => `bug (${bugId}) removed!`)
 }
 
+function save(bugToSave) {
+    if (bugToSave._id) {
+        const bugIdx = bugs.findIndex(bug => bug._id === bugToSave._id)
+        bugs[bugIdx] = bugToSave
+    } else {
+        bugToSave._id = utilService.makeId()
+        bugs.unshift(bugToSave)
+    }
 
+    return _saveBugsToFile().then(() => bugToSave)
+}
 
 function _saveBugsToFile() {
     return new Promise((resolve, reject) => {

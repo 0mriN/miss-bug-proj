@@ -9,17 +9,30 @@ app.get('/api/bug', (req, res) => {
         .then(bugs => res.send(bugs))
 })
 
+app.get('/api/bug/save', (req, res) => {
+    const bugToSave = {
+        _id: req.query._id,
+        title: req.query.title,
+        descreption: req.query.descreption,
+        severity: +req.query.severity,
+        createdAt: +req.query.createdAt
+    }
+
+    bugService.save(bugToSave)
+        .then(bug => res.send(bug))
+})
+
 app.get('/api/bug/:bugId', (req, res) => {
     const { bugId } = req.params
     bugService.getById(bugId)
-    .then(bug => res.send(bug))
+        .then(bug => res.send(bug))
 })
 
 app.get('/api/bug/:bugId/remove', (req, res) => {
     const { bugId } = req.params
     bugService.remove(bugId)
-    // .then(() => res.send(`Bug ${bugId} removed!`))
-    .then(()=> res.redirect('/api/bug'))
+        // .then(() => res.send(`Bug ${bugId} removed!`))
+        .then(() => res.redirect('/api/bug'))
 })
 
 
