@@ -1,39 +1,6 @@
 [
     {
-        "_id": "5lvWU",
-        "title": "cant get bug",
-        "descreption": "problem",
-        "severity": null,
-        "createdAt": null
-    },
-    {
         "_id": "c1IYI",
-        "title": "cant get bug",
-        "descreption": "problem",
-        "severity": 1,
-        "createdAt": null
-    },
-    {
-        "_id": "ZooS5",
-        "title": "cant get bug",
-        "descreption": "problem",
-        "severity": 1,
-        "createdAt": null
-    },
-    {
-        "_id": "05QyL",
-        "severity": null,
-        "createdAt": null
-    },
-    {
-        "_id": "DsfzP",
-        "title": "cant get bug",
-        "descreption": "problem",
-        "severity": 3,
-        "createdAt": null
-    },
-    {
-        "_id": "MwemP",
         "title": "cant get bug",
         "descreption": "problem",
         "severity": 1,
@@ -42,8 +9,8 @@
     {
         "_id": "0E0xl",
         "title": "cant get bug",
-        "descreption": "problem",
-        "severity": null,
+        "descreption": "problem   ",
+        "severity": 4,
         "createdAt": null
     },
     {
@@ -54,17 +21,10 @@
         "createdAt": null
     },
     {
-        "_id": "abc1234",
-        "title": "Cannot remove a new bug",
-        "description": "problem when clicking Remove",
-        "severity": 2,
-        "createdAt": 1542107359554
-    },
-    {
         "_id": "abc12345",
         "title": "Cannot load a new bug",
-        "description": "problem when clicking Load",
-        "severity": 5,
+        "descreption": "undefined         ",
+        "severity": 3,
         "createdAt": 1542107379454
     }
 ]
