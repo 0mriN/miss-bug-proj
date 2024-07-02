@@ -1,5 +1,12 @@
 [
     {
+        "title": "poko",
+        "description": "fajfajfa",
+        "severity": 2,
+        "_id": "YV8uJ",
+        "createdAt": 1719937628140
+    },
+    {
         "title": "hshs",
         "description": "shshsh",
         "severity": 2,
@@ -11,48 +18,47 @@
         "description": "gagaga",
         "severity": 2,
         "_id": "ccQZ6",
-        "createdAt": 1719935244396
+        "createdAt": 1719935244396,
+        "labels" : ["critical", "need-CR", "dev-branch"]
     },
     {
         "_id": "abc123",
         "title": "Cannot save a new bug",
         "description": "problem when clicking Save",
         "severity": 1,
-        "createdAt": 1542107359454
+        "createdAt": 1542107359454, 
+        "labels" : ["critical", "need-CR"]
     },
     {
         "_id": "abc1234",
         "title": "Cannot remove a new bug",
         "description": "problem when clicking Remove",
         "severity": 2,
-        "createdAt": 1542107359554
+        "createdAt": 1542107359554,
+        "labels" : ["critical", "need-CR", "dev-branch"]
     },
     {
         "_id": "abc12345",
         "title": "Cannot load a new bug",
         "description": "problem when clicking Load",
         "severity": 5,
-        "createdAt": 1542107379454
-    },
-    {
-        "_id": "abc12",
-        "title": "Cannot save a new bug",
-        "description": "problem when clicking Save",
-        "severity": 3,
-        "createdAt": 1542107359454
+        "createdAt": 1542107379454,
+        "labels" : ["dev-branch"]
     },
     {
         "_id": "abc124",
         "title": "Cannot remove a new bug",
         "description": "problem when clicking Remove",
         "severity": 2,
-        "createdAt": 1542107359554
+        "createdAt": 1542107359554,
+        "labels" : ["need-CR"]
     },
     {
         "_id": "abc1245",
         "title": "Cannot load a new bug",
         "description": "problem when clicking Load",
         "severity": 5,
-        "createdAt": 1542107379454
+        "createdAt": 1542107379454,
+        "labels" : ["critical"]
     }
 ]

@@ -6,7 +6,7 @@ const { useState, useEffect, useRef } = React
 export function BugFilter({ filterBy, onSetFilter }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
-    const onSetFilterDebounce = useRef(utilService.debounce(onSetFilter, 500))
+    const onSetFilterDebounce = useRef(utilService.debounce(onSetFilter, 700))
 
     useEffect(() => {
         onSetFilterDebounce.current(filterByToEdit)
