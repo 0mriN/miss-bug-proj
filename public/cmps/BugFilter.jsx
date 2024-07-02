@@ -3,7 +3,7 @@ import { utilService } from "../services/util.service.js"
 
 const { useState, useEffect, useRef } = React
 
-export function CarFilter({ filterBy, onSetFilter }) {
+export function BugFilter({ filterBy, onSetFilter }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
     const onSetFilterDebounce = useRef(utilService.debounce(onSetFilter, 500))
@@ -30,12 +30,7 @@ export function CarFilter({ filterBy, onSetFilter }) {
                 break;
         }
 
-        setFilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }))
-    }
-
-    function onSubmitFilter(ev) {
-        ev.preventDefault()
-        onSetFilter(filterByToEdit)
+        setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
     }
 
     const { title, severity } = filterByToEdit
@@ -43,14 +38,14 @@ export function CarFilter({ filterBy, onSetFilter }) {
     return (
         <section className="bug-filter">
             <h2>Filter Our Bugs</h2>
-            <form onSubmit={onSubmitFilter}>
+            <form>
                 <label htmlFor="title">Title</label>
                 <input value={title} onChange={handleChange} name="title" type="text" id="title" />
 
                 <label htmlFor="severity">Severity</label>
                 <input value={severity || ''} onChange={handleChange} name="severity" type="number" id="severity" />
 
-                <button>Submit</button>
+                
             </form>
         </section>
     )

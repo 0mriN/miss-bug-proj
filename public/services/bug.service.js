@@ -17,14 +17,18 @@ export const bugService = {
 
 
 function query(filterBy = {}) {
-    return axios.get(BASE_URL, {params:filterBy})
+    return axios.get(BASE_URL, { params: filterBy })
         .then(res => res.data)
-    // .then(bugs => {
-    //     if(filterBy.title) {
-    //         const regExp = new RegExp(filterBy.title,'i')
-    //         bugs = bugs.filter(bug => regExp.test(bug.title))
-    //     }
-    // })
+        .then(bugs => {
+            if (filterBy.title) {
+                const regExp = new RegExp(filterBy.title, 'i')
+                bugs = bugs.filter(bug => regExp.test(bug.title) || regExp.test(bug.description))
+            }
+            if (filterBy.severity) {
+                bugs = bugs.filter(bug => bug.severity >= filterBy.severity)
+            }
+            return bugs
+        })
 }
 function getById(bugId) {
     return axios.get(BASE_URL + bugId)
@@ -39,25 +43,25 @@ function remove(bugId) {
 
 function save(bug) {
     const url = BASE_URL + 'save'
-    let queryParams = `?title=${bug.title}&descreption=${bug.descreption}
+    let queryParams = `?title=${bug.title}&description=${bug.description}
    &severity=${bug.severity}&createdAt=${bug.createdAt}`
     if (bug._id) queryParams += `&_id=${bug._id}`
     return axios.get(url + queryParams).then(res => res.data)
 }
 
 function getDefaultFilter() {
-    return { title: '', descreption: '', severity: '', createdAt: '' }
+    return { title: '', severity: '' }
 }
 
 
 function getFilterFromSearchParams(searchParams) {
     const title = searchParams.get('title') || ''
-    const descreption = searchParams.get('descreption') || ''
+    const description = searchParams.get('description') || ''
     const severity = searchParams.get('severity') || ''
     const createdAt = searchParams.get('createdAt') || ''
     return {
         title,
-        descreption,
+        description,
         severity,
         createdAt
     }

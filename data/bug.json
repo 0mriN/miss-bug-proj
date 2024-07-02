@@ -1,30 +1,23 @@
 [
     {
-        "_id": "c1IYI",
-        "title": "cant get bug",
-        "descreption": "problem",
-        "severity": 1,
-        "createdAt": null
-    },
-    {
-        "_id": "0E0xl",
-        "title": "cant get bug",
-        "descreption": "problem   ",
-        "severity": 4,
-        "createdAt": null
-    },
-    {
         "_id": "abc123",
-        "title": "cant get bug",
-        "descreption": "problem",
-        "severity": 1,
-        "createdAt": null
+        "title": "Cannot save a new bug",
+        "description": "problem when clicking Save",
+        "severity": 3,
+        "createdAt": 1542107359454
+    },
+    {
+        "_id": "abc1234",
+        "title": "Cannot remove a new bug",
+        "description": "problem when clicking Remove",
+        "severity": 2,
+        "createdAt": 1542107359554
     },
     {
         "_id": "abc12345",
         "title": "Cannot load a new bug",
-        "descreption": "undefined         ",
-        "severity": 3,
+        "description": "problem when clicking Load",
+        "severity": 5,
         "createdAt": 1542107379454
     }
 ]

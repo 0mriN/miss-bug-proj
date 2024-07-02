@@ -110,3 +110,14 @@ nav a:hover {
 .container {
     padding-inline: 8rem;
 }
+
+.bug-filter {
+    background-color:lightskyblue;
+  }
+  
+  .bug-filter form {
+    display: grid;
+    grid-template-columns: 100px 200px;
+    padding:10px;
+  }
+  

@@ -8,15 +8,15 @@ import { showErrorMsg } from '../services/event-bus.service.js'
 export function BugDetails() {
 
     const [bug, setBug] = useState(null)
-    const { bugId } = useParams()
+    const params = useParams()
 
     useEffect(() => {
-        bugService.getById(bugId)
+        bugService.getById(params.bugId)
             .then(bug => {
                 setBug(bug)
             })
             .catch(err => {
-                showErrorMsg('Cannot load bug ',err)
+                showErrorMsg('Cannot load bug ', err)
             })
     }, [])
 
@@ -24,8 +24,8 @@ export function BugDetails() {
     return bug && <div>
         <h3>Bug Details 🐛</h3>
         <h4>{bug.title}</h4>
+        <h4>description: {bug.description}</h4>
         <p>Severity: <span>{bug.severity}</span></p>
-        <p>description: <span>{bug.description}</span></p>
         <Link to="/bug">Back to List</Link>
     </div>
 

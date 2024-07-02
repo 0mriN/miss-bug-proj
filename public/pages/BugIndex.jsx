@@ -23,18 +23,15 @@ export function BugIndex() {
             })
     }
 
-
     function onRemoveBug(bugId) {
         bugService
             .remove(bugId)
             .then(() => {
-                console.log('Deleted Succesfully!')
-                const bugsToUpdate = bugs.filter((bug) => bug._id !== bugId)
-                setBugs(bugsToUpdate)
-                showSuccessMsg('Bug removed')
+                setBugs(prevBugs => prevBugs.filter((bug) => bug._id !== bugId))
+                showSuccessMsg(`Bug (${bugId}) removed!`)
             })
             .catch((err) => {
-                console.log('Error from onRemoveBug ->', err)
+                console.log('Error from onRemoveBug -', err)
                 showErrorMsg('Cannot remove bug')
             })
     }
@@ -43,6 +40,7 @@ export function BugIndex() {
         const bug = {
             title: prompt('Bug title?'),
             severity: +prompt('Bug severity?'),
+            description: prompt('Bug description?')
         }
         bugService
             .save(bug)
@@ -86,8 +84,8 @@ export function BugIndex() {
             <section className='info-actions'>
                 <h3>Bugs App</h3>
                 <button onClick={onAddBug}>Add Bug ⛐</button>
+            <BugFilter onSetFilter={onSetFilter} filterBy={filterBy} />
             </section>
-            {/* <BugFilter filterBy={filterBy} onSetFilter={onSetFilter} /> */}
             <main>
                 <BugList bugs={bugs} onRemoveBug={onRemoveBug} onEditBug={onEditBug} />
             </main>
