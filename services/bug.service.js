@@ -23,6 +23,7 @@ function getById(bugId) {
 
 function remove(bugId) {
     const bugIdx = bugs.findIndex(bug => bug._id === bugId)
+    console.log('bugIdx:', bugIdx);
     if (bugIdx < 0) return Promise.reject('Cannot find bug - ' + bugId)
     bugs.splice(bugIdx, 1)
     return _saveBugsToFile().then(() => `bug (${bugId}) removed!`)

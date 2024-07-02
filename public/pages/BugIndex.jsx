@@ -24,9 +24,11 @@ export function BugIndex() {
     }
 
     function onRemoveBug(bugId) {
+        console.log('bugId:', bugId)
         bugService
             .remove(bugId)
             .then(() => {
+                console.log(':remove')
                 setBugs(prevBugs => prevBugs.filter((bug) => bug._id !== bugId))
                 showSuccessMsg(`Bug (${bugId}) removed!`)
             })
