@@ -26,6 +26,27 @@ function query(filterBy = {}) {
                 const startIdx = filterBy.pageIdx * PAGE_SIZE
                 bugs = bugs.slice(startIdx, startIdx + PAGE_SIZE)
             }
+            if (filterBy.labels.length) {
+                const regExp = new RegExp(filterBy.labels, 'i')
+                bugs = bugs.filter(bug => regExp.test(bug.labels))
+            }
+            if (filterBy.sortBy) {
+                if (filterBy.sortBy === 'title') {
+                    bugs =
+                        bugs.sort((bug1, bug2) =>
+                            bug1.title.localeCompare(bug2.title) * filterBy.sortDir)
+
+                } else if (filterBy.sortBy === 'severity') {
+                    bugs =
+                        bugs.sort((bug1, bug2) =>
+                            (bug1.severity - bug2.severity) * filterBy.sortDir)
+
+                } else if (filterBy.sortBy === 'createdAt') {
+                    bugs =
+                        bugs.sort((bug1, bug2) =>
+                            (bug1.createdAt - bug2.createdAt) * filterBy.sortDir)
+                }
+            }
             return bugs
         })
 }

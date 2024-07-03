@@ -23,7 +23,7 @@ export function BugFilter({ filterBy, onSetFilter }) {
                 break;
 
             case 'checkbox':
-                value = target.checked
+                value = target.checked ? -1 : 1
                 break
 
             default:
@@ -33,7 +33,7 @@ export function BugFilter({ filterBy, onSetFilter }) {
         setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
     }
 
-    const { title, severity } = filterByToEdit
+    const { title, severity, labels, sortBy, sortDir } = filterByToEdit
 
     return (
         <section className="bug-filter">
@@ -45,8 +45,26 @@ export function BugFilter({ filterBy, onSetFilter }) {
                 <label htmlFor="severity">Severity</label>
                 <input value={severity || ''} onChange={handleChange} name="severity" type="number" id="severity" />
 
-                
+                <label htmlFor="labels">labels</label>
+                <input value={labels} onChange={handleChange} name="labels" type="text" id="labels" />
+
             </form>
+            <label htmlFor="sortBy">Sort by:</label>
+            <select name="sortBy" value={sortBy} onChange={handleChange}>
+                <option value="">Select Sorting</option>
+                <option value="title">Title</option>
+                <option value="severity">Severity</option>
+                <option value="createdAt">Created At</option>
+            </select>
+
+            <label htmlFor="sortDir">Sort descending:</label>
+            <input
+                type="checkbox"
+                name="sortDir"
+                id="sortDir"
+                checked={sortDir === -1}
+                onChange={handleChange}
+            />
         </section>
     )
 }

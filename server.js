@@ -12,9 +12,14 @@ app.use(express.json())
 
 app.get('/api/bug', (req, res) => {
     const filterBy = {
-        title: req.query.title,
-        severity: +req.query.severity,
-        pageIdx: req.query.pageIdx
+        title: req.query.title || '',
+        severity: +req.query.severity||0,
+        labels: req.query.labels|| [],
+
+        sortBy: req.query.sortBy || '',
+        sortDir:req.query.sortDir|| '',
+
+        pageIdx: req.query.pageIdx,
     }
 
     bugService.query(filterBy)
@@ -25,12 +30,18 @@ app.get('/api/bug', (req, res) => {
         })
 })
 
+app.get('/')
+
 app.post('/api/bug', (req, res) => {
 
+    const {_id, title, description, severity ,createdAt, labels} = req.body
     const bugToSave = {
-        title: req.body.title,
-        description: req.body.description,
-        severity: +req.body.severity,
+
+        title: title || '',
+        description: description || '',
+        severity: +severity || '',
+        createdAt: +createdAt || '',
+        labels: labels || []
     }
 
     bugService.save(bugToSave)
@@ -42,11 +53,14 @@ app.post('/api/bug', (req, res) => {
 })
 
 app.put('/api/bug', (req, res) => {
+    const {_id, title, description, severity ,createdAt, labels} = req.body
     const bugToSave = {
-        _id: req.body._id,
-        title: req.body.title,
-        description: req.body.description,
-        severity: +req.body.severity
+        _id,
+        title: title || '',
+        description: description || '',
+        severity: +severity || '',
+        createdAt: +createdAt || '',
+        labels: labels || []
     }
 
     bugService.save(bugToSave)

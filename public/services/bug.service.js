@@ -40,7 +40,7 @@ function save(bug) {
 }
 
 function getDefaultFilter() {
-    return { title: '', severity: '' }
+    return { title: '', severity: '', labels: [], sortBy: '', sortDir: 1 }
 }
 
 
